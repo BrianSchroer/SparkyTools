@@ -7,11 +7,36 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{8BAD1B
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README.md = README.md
+		Sparky.png = Sparky.png
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AutoMapper", "AutoMapper", "{93E0EC41-88A0-4495-854D-87984D6DEABE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparkyTools.AutoMapper", "SparkyTools.AutoMapper\SparkyTools.AutoMapper.csproj", "{D6B5DB56-C93C-425F-83B7-C32E8B8F23EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparkyTools.AutoMapper.UnitTests", "SparkyTools.AutoMapper.UnitTests\SparkyTools.AutoMapper.UnitTests.csproj", "{AE6E90C5-4E24-47EC-936B-BC94C07FF4FA}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6B5DB56-C93C-425F-83B7-C32E8B8F23EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6B5DB56-C93C-425F-83B7-C32E8B8F23EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6B5DB56-C93C-425F-83B7-C32E8B8F23EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6B5DB56-C93C-425F-83B7-C32E8B8F23EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE6E90C5-4E24-47EC-936B-BC94C07FF4FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE6E90C5-4E24-47EC-936B-BC94C07FF4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE6E90C5-4E24-47EC-936B-BC94C07FF4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE6E90C5-4E24-47EC-936B-BC94C07FF4FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D6B5DB56-C93C-425F-83B7-C32E8B8F23EE} = {93E0EC41-88A0-4495-854D-87984D6DEABE}
+		{AE6E90C5-4E24-47EC-936B-BC94C07FF4FA} = {93E0EC41-88A0-4495-854D-87984D6DEABE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {778186D8-DAD3-464A-8A7E-FE65CBB1E149}
