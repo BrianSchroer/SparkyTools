@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{8BAD1B77-36F3-407B-B62A-702BD1E907BC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Solution", "_Solution", "{8BAD1B77-36F3-407B-B62A-702BD1E907BC}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
 		README.md = README.md
@@ -15,6 +15,16 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparkyTools.AutoMapper", "SparkyTools.AutoMapper\SparkyTools.AutoMapper.csproj", "{D6B5DB56-C93C-425F-83B7-C32E8B8F23EE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparkyTools.AutoMapper.UnitTests", "SparkyTools.AutoMapper.UnitTests\SparkyTools.AutoMapper.UnitTests.csproj", "{AE6E90C5-4E24-47EC-936B-BC94C07FF4FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{C1FE506B-E36B-47D9-A448-80D181EAB758}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.XmlConfig", "SparkyTools.XmlConfig\SparkyTools.XmlConfig.csproj", "{A4A96969-0136-4949-A411-E8DC57C2883F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyProvider", "DependencyProvider", "{8909F9BD-A0D5-4580-B05E-C0ECF598E1C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.DependencyProvider", "SparkyTools.DependencyProvider\SparkyTools.DependencyProvider.csproj", "{8D1D78A3-48DE-4D06-9CED-D5D07217B15A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.DependencyProvider.UnitTests", "SparkyTools.DependencyProvider.UnitTests\SparkyTools.DependencyProvider.UnitTests.csproj", "{475978B6-81AA-4AC4-9D0D-B3B15D3754C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +40,18 @@ Global
 		{AE6E90C5-4E24-47EC-936B-BC94C07FF4FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE6E90C5-4E24-47EC-936B-BC94C07FF4FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE6E90C5-4E24-47EC-936B-BC94C07FF4FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4A96969-0136-4949-A411-E8DC57C2883F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4A96969-0136-4949-A411-E8DC57C2883F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4A96969-0136-4949-A411-E8DC57C2883F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4A96969-0136-4949-A411-E8DC57C2883F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D1D78A3-48DE-4D06-9CED-D5D07217B15A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1D78A3-48DE-4D06-9CED-D5D07217B15A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1D78A3-48DE-4D06-9CED-D5D07217B15A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1D78A3-48DE-4D06-9CED-D5D07217B15A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{475978B6-81AA-4AC4-9D0D-B3B15D3754C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{475978B6-81AA-4AC4-9D0D-B3B15D3754C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{475978B6-81AA-4AC4-9D0D-B3B15D3754C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{475978B6-81AA-4AC4-9D0D-B3B15D3754C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +59,9 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D6B5DB56-C93C-425F-83B7-C32E8B8F23EE} = {93E0EC41-88A0-4495-854D-87984D6DEABE}
 		{AE6E90C5-4E24-47EC-936B-BC94C07FF4FA} = {93E0EC41-88A0-4495-854D-87984D6DEABE}
+		{A4A96969-0136-4949-A411-E8DC57C2883F} = {C1FE506B-E36B-47D9-A448-80D181EAB758}
+		{8D1D78A3-48DE-4D06-9CED-D5D07217B15A} = {8909F9BD-A0D5-4580-B05E-C0ECF598E1C1}
+		{475978B6-81AA-4AC4-9D0D-B3B15D3754C8} = {8909F9BD-A0D5-4580-B05E-C0ECF598E1C1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {778186D8-DAD3-464A-8A7E-FE65CBB1E149}
