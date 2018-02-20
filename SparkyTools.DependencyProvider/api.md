@@ -1,5 +1,7 @@
 ﻿# SparkyTools.DependencyProvider
-
+_see also_:
+* the rest of the [**"Sparky suite"** of .NET utilities and test helpers](https://www.nuget.org/profiles/BrianSchroer)
+-----
 Ludicrously lightweight dependency wrapper/provider to improve testability of classes that use dependencies that aren't easily mockable (e.g. System.DateTime):
 
 ```csharp

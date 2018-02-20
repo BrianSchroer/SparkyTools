@@ -2,6 +2,7 @@
 _see also_:
 * **[SparkyTestHelpers.Mapping](https://www.nuget.org/packages/SparkyTestHelpers.Mapping)**: Helpers for testing properties "mapped" from one type to another
 * **[SparkyTestHelpers.AutoMapper](https://www.nuget.org/packages/SparkyTestHelpers.AutoMapper/)**: Extends **SparkyTestHelpers.Mapping** with with additional extension methods specifically for use with **AutoMapper**.
+* the rest of the [**"Sparky suite"** of .NET utilities and test helpers](https://www.nuget.org/profiles/BrianSchroer)
 ---
 This package enables an alternate, less verbose syntax for some of the functions that "dot on" to **[AutoMapper](http://automapper.org/)** "**ForMember**" functions, including **.MapFrom**, **.NullSubstitute**, **.UseValue** and **.Ignore**.
 
