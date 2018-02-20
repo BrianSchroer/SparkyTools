@@ -12,3 +12,9 @@ Ludicrously lightweight dependency wrapper/provider to improve testability of cl
 * [nuget.org link](https://www.nuget.org/packages/SparkyTools.DependencyProvider/)
 * [Source Code](/SparkyTools.DependencyProvider)
 * [API documentation](/SparkyTools.DependencyProvider/api.md)
+
+## SparkyTools.XmlConfig
+Makes it easy to load a strongly-typed object (or IList of objects) from a custom web.config or app.config file section without having to write a custom IConfigurationSectionHandler implementation.
+* [nuget.org link](https://www.nuget.org/packages/SparkyTools.XmlConfig/)
+* [Source Code](/SparkyTools.XmlConfig)
+* [API documentation](/SparkyTools.XmlConfig/api.md)
