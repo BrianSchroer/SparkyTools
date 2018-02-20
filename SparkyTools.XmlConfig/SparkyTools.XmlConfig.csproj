@@ -9,8 +9,10 @@
     <PackageProjectUrl>https://github.com/BrianSchroer/SparkyTools</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/BrianSchroer/SparkyTools/master/Sparky.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/BrianSchroer/SparkyTools</RepositoryUrl>
-    <PackageReleaseNotes>config, web.config, app.config, xml</PackageReleaseNotes>
+    <PackageReleaseNotes>Documentation updates</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags>config, web.config, app.config, xml</PackageTags>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
