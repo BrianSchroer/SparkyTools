@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SparkyTools.DependencyProvider;
+using System;
 using System.Configuration;
 using System.Xml;
 
@@ -80,6 +81,20 @@ namespace SparkyTools.XmlConfig
             {
                 throw ConfigurationSectionDeserializerHelper.NewConfigurationErrorsException(ex, sectionName);
             }
+        }
+
+        /// <summary>
+        /// Create <see cref="SparkyTools.DependencyProvider.DependencyProvider{TDependency}"/>
+        /// with a callback to this class's static <see cref="Load{T}(string, bool)"/> method,
+        /// using <see cref="SparkyTools.DependencyProvider.DependencyProvider.CreateStatic{TDependency}(Func{TDependency})"/> 
+        /// so we only load from .config once.
+        /// </summary>
+        /// <typeparam name="T">The type to be loaded.</typeparam>
+        /// <param name="sectionName">Name of the .config file section.</param>
+        /// <returns>New <see cref="SparkyTools.DependencyProvider.DependencyProvider{TDependency}"/> instance.</returns>
+        public static DependencyProvider<T> DependencyProvider<T>(string sectionName)
+        {
+            return SparkyTools.DependencyProvider.DependencyProvider.CreateStatic(() => Load<T>(sectionName)); 
         }
     }
 }

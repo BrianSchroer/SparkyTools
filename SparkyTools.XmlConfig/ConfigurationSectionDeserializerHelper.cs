@@ -40,6 +40,11 @@ namespace SparkyTools.XmlConfig
                 throw NewConfigurationErrorsException(ex, sectionName);
             }
 
+            if (shouldThrowExceptionIfNotFound && section == null)
+            {
+                throw NewConfigurationErrorsException(sectionName, "Section not found.");
+            }
+
             return section;
         }
 
@@ -47,14 +52,14 @@ namespace SparkyTools.XmlConfig
         {
             XPathNavigator navigator = section.CreateNavigator();
 
-            object evaluatedType = navigator.Evaluate("string(@type)");
+            string evaluatedType = navigator.Evaluate("string(@type)").ToString();
 
-            if (evaluatedType == null)
+            if (string.IsNullOrEmpty(evaluatedType))
             {
-                throw NewConfigurationErrorsException(section.Name, "The \"type\" attribute is not present.");
+                throw new ConfigurationErrorsException("The \"type\" attribute is not present.");
             }
 
-            return evaluatedType.ToString();
+            return evaluatedType;
         }
 
         public static object DeserializeXmlNode(
@@ -79,7 +84,8 @@ namespace SparkyTools.XmlConfig
             {
                 xmlString = xmlString
                     .Replace($"<{nodeName}>", $"<{shortTypeName}>")
-                    .Replace($"</{nodeName}>", $"</{shortTypeName}");
+                    .Replace($"<{nodeName} ", $"<{shortTypeName} ")
+                    .Replace($"</{nodeName}>", $"</{shortTypeName}>");
             }
 
             var xmlSerializer = new XmlSerializer(typeToDeserialize);
@@ -130,7 +136,7 @@ namespace SparkyTools.XmlConfig
         }
 
         internal static ConfigurationErrorsException NewConfigurationErrorsException(
-            string sectionName, string format, params object[] args) =>
-                new ConfigurationErrorsException($"{ExceptionMessagePrefix(sectionName)}{string.Format(format, args)}");
+            string sectionName, string message) =>
+                new ConfigurationErrorsException($"{ExceptionMessagePrefix(sectionName)}{message}");
     }
 }

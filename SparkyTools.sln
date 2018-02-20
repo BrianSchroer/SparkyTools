@@ -18,13 +18,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparkyTools.AutoMapper.Unit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{C1FE506B-E36B-47D9-A448-80D181EAB758}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.XmlConfig", "SparkyTools.XmlConfig\SparkyTools.XmlConfig.csproj", "{A4A96969-0136-4949-A411-E8DC57C2883F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparkyTools.XmlConfig", "SparkyTools.XmlConfig\SparkyTools.XmlConfig.csproj", "{A4A96969-0136-4949-A411-E8DC57C2883F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyProvider", "DependencyProvider", "{8909F9BD-A0D5-4580-B05E-C0ECF598E1C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.DependencyProvider", "SparkyTools.DependencyProvider\SparkyTools.DependencyProvider.csproj", "{8D1D78A3-48DE-4D06-9CED-D5D07217B15A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparkyTools.DependencyProvider", "SparkyTools.DependencyProvider\SparkyTools.DependencyProvider.csproj", "{8D1D78A3-48DE-4D06-9CED-D5D07217B15A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.DependencyProvider.UnitTests", "SparkyTools.DependencyProvider.UnitTests\SparkyTools.DependencyProvider.UnitTests.csproj", "{475978B6-81AA-4AC4-9D0D-B3B15D3754C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparkyTools.DependencyProvider.UnitTests", "SparkyTools.DependencyProvider.UnitTests\SparkyTools.DependencyProvider.UnitTests.csproj", "{475978B6-81AA-4AC4-9D0D-B3B15D3754C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.XmlConfig.UnitTests", "SparkyTools.XmlConfig.UnitTests\SparkyTools.XmlConfig.UnitTests.csproj", "{6633ED3E-FCE7-492A-8D71-E4479962D836}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{475978B6-81AA-4AC4-9D0D-B3B15D3754C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{475978B6-81AA-4AC4-9D0D-B3B15D3754C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{475978B6-81AA-4AC4-9D0D-B3B15D3754C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6633ED3E-FCE7-492A-8D71-E4479962D836}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6633ED3E-FCE7-492A-8D71-E4479962D836}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6633ED3E-FCE7-492A-8D71-E4479962D836}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6633ED3E-FCE7-492A-8D71-E4479962D836}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{A4A96969-0136-4949-A411-E8DC57C2883F} = {C1FE506B-E36B-47D9-A448-80D181EAB758}
 		{8D1D78A3-48DE-4D06-9CED-D5D07217B15A} = {8909F9BD-A0D5-4580-B05E-C0ECF598E1C1}
 		{475978B6-81AA-4AC4-9D0D-B3B15D3754C8} = {8909F9BD-A0D5-4580-B05E-C0ECF598E1C1}
+		{6633ED3E-FCE7-492A-8D71-E4479962D836} = {C1FE506B-E36B-47D9-A448-80D181EAB758}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {778186D8-DAD3-464A-8A7E-FE65CBB1E149}
