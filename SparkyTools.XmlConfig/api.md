@@ -2,7 +2,10 @@
 _see also_:
 * the rest of the [**"Sparky suite"** of .NET utilities and test helpers](https://www.nuget.org/profiles/BrianSchroer)
 ---
-This package makes it easy to load a strongly-typed object (or IList of objects) from a custom **web.config** or **app.config** file section without having to write a custom **[IConfigurationSectionHandler](https://msdn.microsoft.com/en-us/library/system.configuration.iconfigurationsectionhandler)** implementation.
+
+### ConfigurationSectionDeserializer / ConfigurationSectionListDeserializer
+
+These classes makes it easy to load a strongly-typed object (or IList of objects) from a custom **web.config** or **app.config** file section without having to write a custom **[IConfigurationSectionHandler](https://msdn.microsoft.com/en-us/library/system.configuration.iconfigurationsectionhandler)** implementation.
 
 In the .config file, register each custom section with a type of "SparkyTools.XmlConfig.**ConfigurationSectionDeserializer**" or
 "SparkyTools.XmlConfig.**ConfigurationSectionListDeserializer**": 
@@ -40,3 +43,52 @@ To read from your custom .config section, just call the **Load** method, specify
     Foo foo = ConfigurationSectionDeserializer.Load<Foo>("Foo");
     IList<Foo> fooList = ConfigurationSectionListDeserializer.Load<Foo>("FooList");
 ```
+
+### DependencyProvider methods
+These methods create [**DependencyProvider**](https://www.nuget.org/packages/SparkyTools.DependencyProvider/)s for use with apps that use app.config / web.config files:
+
+* **ConfigurationSectionDeserializer.DependencyProvider / ConfigurationSectionListDeserializer.DependencyProvider**
+  create DependencyProviders that load data from a .config file section:
+    ```csharp
+    using SparkyTools.DependencyProvider;
+
+    public class Foo
+    {
+        public Foo(
+            DependencyProvider<Bar> barProvider, 
+            DependencyProvider<IList<Baz>> bazProvider)
+        {
+        }
+    }
+    ```
+    ```csharp
+    using SparkyTools.XmlConfig;
+    . . .
+        var foo = new Foo(
+            ConfigurationSectionDeserializer.DependencyProvider<Bar>("Bar"),
+            ConfigurationSectionListDeserializer.DependencyProvider<Baz>("BazList"));
+    ```
+* **AppSettings.DependencyProvider** creates a DependencyProvider that wraps ConfigurationManager.AppSettings:
+    ```csharp
+    using SparkyTools.DependencyProvider;
+
+    public class Qux
+    {
+        private readonly Func<string, string> _getAppSetting;
+
+        public Qux(DependencyProvider<Func<string, string> appSettingsProvider)
+        {
+            _getAppSetting = appSettingsProvider.GetValue();
+        }
+    
+        public void MethodUsingAppSettings()
+        {
+            string valueFromAppSettings = _getAppSetting("key);
+        }
+    }
+    ```
+    ```csharp
+    using SparkyTools.XmlConfig;
+    ...
+        var qux = new Qux(AppSettings.DependencyProvider());
+    ```

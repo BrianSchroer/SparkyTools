@@ -9,10 +9,10 @@
     <PackageProjectUrl>https://github.com/BrianSchroer/SparkyTools</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/BrianSchroer/SparkyTools/master/Sparky.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/BrianSchroer/SparkyTools</RepositoryUrl>
-    <PackageReleaseNotes>Documentation updates</PackageReleaseNotes>
+    <PackageReleaseNotes>Added AppSettings.DependencyProvider()</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>config, web.config, app.config, xml</PackageTags>
-    <Version>1.0.2</Version>
+    <Version>1.1.0</Version>
     <Authors>Brian Schroer</Authors>
     <Company>Brian Schroer</Company>
   </PropertyGroup>
