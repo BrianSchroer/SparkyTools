@@ -12,7 +12,9 @@
     <PackageReleaseNotes>Documentation updates</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageTags>config, web.config, app.config, xml</PackageTags>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
+    <Authors>Brian Schroer</Authors>
+    <Company>Brian Schroer</Company>
   </PropertyGroup>
 
   <ItemGroup>
