@@ -10,7 +10,7 @@ namespace SparkyTools.XmlConfig
     public static class AppSettings
     {
         /// <summary>
-        /// Creates new <see cref="DependencyProvider{string, string}"/> for retrieving values from
+        /// Creates new <see cref="DependencyProvider"/> for retrieving values from
         /// <see cref="ConfigurationManager.AppSettings"/>.
         /// </summary>
         /// <returns>The DependencyProvider.</returns>

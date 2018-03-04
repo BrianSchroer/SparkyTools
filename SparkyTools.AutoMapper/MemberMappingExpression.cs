@@ -19,8 +19,6 @@ namespace SparkyTools.AutoMapper
         /// <summary>
         /// Creates a new <see cref="MemberMappingExpression{TSource, TDestination}"/> instance.
         /// </summary>
-        /// <typeparam name="TSource">Source ("map from") type.</typeparam>
-        /// <typeparam name="TDestination">Destination ("map to") type.</typeparam>
         /// <param name="mappingExpression"><see cref="IMappingExpression{TSource, TDestination}"/> instance.</param>
         /// <param name="member">Member expression.</param>
         public MemberMappingExpression(

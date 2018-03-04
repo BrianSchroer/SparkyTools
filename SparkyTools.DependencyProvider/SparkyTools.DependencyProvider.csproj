@@ -14,4 +14,12 @@
     <PackageTags>test, testing, unittest, unittesting, dependencyinjection</PackageTags>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.0\SparkyTools.DependencyProvider.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="$(SolutionDir)MarkdownDocNet.exe $(TargetDir)$(TargetName).xml $(TargetDir)$(TargetName)$(TargetExt) $(TargetDir)$(TargetName).md" />
+  </Target>
+
 </Project>

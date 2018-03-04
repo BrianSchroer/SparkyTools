@@ -2,6 +2,9 @@
 
 namespace SparkyTools.DependencyProvider
 {
+    /// <summary>
+    /// Lightweight inversion of control dependency provider.
+    /// </summary>
     public class DependencyProvider
     {
         /// <summary>

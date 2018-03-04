@@ -88,7 +88,7 @@ namespace SparkyTools.AutoMapper
         ///         cfg.CreateMap<Foo, Bar>()
         ///         .IgnoreMember(dest => dest.Baz);
         /// ]]>
-        /// </example
+        /// </example>
         public static IMappingExpression<TSource, TDestination> IgnoreMember<TSource, TDestination>(
             this IMappingExpression<TSource, TDestination> mappingExpression,
             Expression<Func<TDestination, object>> member)

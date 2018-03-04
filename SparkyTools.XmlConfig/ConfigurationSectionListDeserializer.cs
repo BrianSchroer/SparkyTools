@@ -93,7 +93,7 @@ namespace SparkyTools.XmlConfig
         ///     <code><![CDATA[
         ///     Foo foo = ConfigurationSectionDeserializer.Load<Foo>("fooConfiguration");
         ///     ]]></code>
-        /// <example
+        /// </example>
         public static IList<T> Load<T>(
             string sectionName, 
             bool shouldThrowExceptionIfSectionNotFound = true,
@@ -120,7 +120,7 @@ namespace SparkyTools.XmlConfig
         /// </summary>
         /// <typeparam name="T">The type to be loaded.</typeparam>
         /// <param name="sectionName">Name of the .config file section.</param>
-        /// <returns>New <see cref="SparkyTools.DependencyProvider.DependencyProvider{TDependency}"/> instance.</returns
+        /// <returns>New <see cref="SparkyTools.DependencyProvider.DependencyProvider{TDependency}"/> instance.</returns>
         public static DependencyProvider<IList<T>> DependencyProvider<T>(string sectionName)
         {
             return SparkyTools.DependencyProvider.DependencyProvider.CreateStatic(() => Load<T>(sectionName));

@@ -17,6 +17,10 @@
     <Company>Brian Schroer</Company>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\SparkyTools.XmlConfig.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="SparkyTools.DependencyProvider" Version="1.0.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.1" />

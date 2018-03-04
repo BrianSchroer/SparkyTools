@@ -69,7 +69,7 @@ namespace SparkyTools.XmlConfig
         ///     <code><![CDATA[
         ///     Foo foo = ConfigurationSectionDeserializer.Load<Foo>("fooConfiguration");
         ///     ]]></code>
-        /// <example>
+        /// </example>
         public static T Load<T>(string sectionName, bool shouldThrowExceptionIfSectionNotFound = true)
         {
             try

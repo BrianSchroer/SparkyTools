@@ -68,7 +68,7 @@ namespace SparkyTools.DependencyProvider
         }
 
         /// <summary>
-        /// Initializes a new <see cref="DependencyProvider{TDependency"/> instance
+        /// Initializes a new <see cref="DependencyProvider{TDependency}"/> instance
         /// that always returns the same static value.
         /// </summary>
         /// <param name="staticValue">The return value.</param>
@@ -112,7 +112,7 @@ namespace SparkyTools.DependencyProvider
         /// <summary>
         /// Gets the dependency value.
         /// </summary>
-        /// <returns>The <see cref="TDependency"/> instance.</returns>
+        /// <returns>The <typeparamref name="TDependency"/> value.</returns>
         public TDependency GetValue()
         {
             _hasBeenCalled = true;
