@@ -49,6 +49,16 @@ A DependencyProvider instance can be created:
     var realTimeProvider = DependencyProvider.Create(DateTime.Now);
     var fakeTimeProvider = DependencyProvider.Create(DateTime.Parse("4/20/2018 4:20 PM"));
     ```
+* via *implicit conversion*
+    ```csharp
+    DependencyProvider<DateTime> fakeTimeProvider = new DateTime(2018, 1, 4);
+    //C# is a bit less fluent about chained implicit conversions...  
+    DependencyProvider<DateTime> readTimeProvider = () => DateTime.Now(); 
+    
+    //most helpful when passing dependencies
+    var foo = new Foo(new DateTime(2018, 1, 4));
+    var fooRealtime = new Foo(() => DateTime.Now())
+    ```
 
 The *DependencyProvider*.**Static()** method tells the provider to cache the first value
 returned by **GetValue()** and return that same value for all subsequent calls:

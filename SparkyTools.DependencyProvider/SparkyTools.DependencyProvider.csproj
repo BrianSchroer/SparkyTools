@@ -1,5 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -13,13 +12,13 @@
     <RepositoryUrl>https://github.com/BrianSchroer/SparkyTools</RepositoryUrl>
     <PackageTags>test, testing, unittest, unittesting, dependencyinjection</PackageTags>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard1.0\SparkyTools.DependencyProvider.xml</DocumentationFile>
   </PropertyGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DocumentationFile>bin\Debug\netstandard1.0\SparkyTools.DependencyProvider.xml</DocumentationFile>
+  </PropertyGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="$(SolutionDir)MarkdownDocNet.exe $(TargetDir)$(TargetName).xml $(TargetDir)$(TargetName)$(TargetExt) $(TargetDir)$(TargetName).md" />
   </Target>
-
 </Project>
