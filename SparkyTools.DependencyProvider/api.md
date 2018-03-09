@@ -51,7 +51,7 @@ A DependencyProvider instance can be created:
     ```
 * via *implicit conversion*:
     ```csharp
-    DependencyProvider<DateTime> realTimeProvider = () => DateTime.Now(); 
+    DependencyProvider<DateTime> realTimeProvider = DateTime.Now(); 
     DependencyProvider<DateTime> fakeTimeProvider = new DateTime(2018, 7, 4, 15, 32, 00);
     ```
 
