@@ -141,5 +141,30 @@ namespace SparkyTools.DependencyProvider
 
             return value;
         }
+
+        /// <summary>
+        /// Creates a Static <see cref="DependencyProvider{TDependency}"/> that returns <paramref name="value"/>
+        /// </summary>
+        /// <param name="value">The value the created <see cref="DependencyProvider{TDependency}"/> should return</param>
+        /// <returns>a <see cref="DependencyProvider{TDependency}"/> that returns <paramref name="value"/></returns>
+        public static implicit operator DependencyProvider<TDependency>(TDependency value)
+        {
+            return new DependencyProvider<TDependency>(value);
+        }
+        
+        /// <summary>
+        /// Creates a Static <see cref="DependencyProvider{TDependency}"/> that returns
+        /// a value from <paramref name="factory"/>
+        /// </summary>
+        /// <param name="factory">
+        /// The function to call to provide the value for the created <see cref="DependencyProvider{TDependency}"/>
+        /// </param>
+        /// <returns>
+        /// a <see cref="DependencyProvider{TDependency}"/> that returns values from <paramref name="factory"/>
+        /// </returns>
+        public static implicit operator DependencyProvider<TDependency>(Func<TDependency> factory)
+        {
+            return new DependencyProvider<TDependency>(factory);
+        }
     }
 }

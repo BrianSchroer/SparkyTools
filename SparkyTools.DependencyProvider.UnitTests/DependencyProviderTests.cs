@@ -9,6 +9,19 @@ namespace SparkyTools.DependencyProvider.UnitTests
     [TestClass]
     public class DependencyProviderTests
     {
+        class Consumer
+        {
+            private readonly DependencyProvider<string> valueProvider;
+
+            /// <inheritdoc />
+            public Consumer(DependencyProvider<string> valueProvider)
+            {
+                this.valueProvider = valueProvider;
+            }
+
+            public string Value => valueProvider.GetValue();
+        }
+        
         [TestMethod]
         public void DependencyProvider_should_work_when_created_via_function_constructor()
         {
@@ -80,6 +93,41 @@ namespace SparkyTools.DependencyProvider.UnitTests
             });
         }
 
+        [TestMethod]
+        public void DependencyProvider_created_with_implicit_conversion_should_have_converted_value()
+        {
+            DependencyProvider<decimal> provider = 56m;
+            
+            Assert.AreEqual(56m, provider.GetValue());
+        }
+        
+        
+        [TestMethod]
+        public void DependencyProvider_created_with_implicit_conversion_from_func_should_have_converted_value()
+        {
+            var callCount = 0;
+            Func<float> factory = () =>
+            {
+                ++callCount;
+                return 42f;
+            };
+
+            DependencyProvider<float> provider = factory;
+            
+            Assert.AreEqual(42f, provider.GetValue());
+            Assert.AreEqual(1, callCount);
+            
+        }
+        
+        
+        [TestMethod]
+        public void DependencyProvider_consumber_created_with_implicit_conversion_should_have_converted_value()
+        {
+            var consumer = new Consumer("test");
+            
+            Assert.AreEqual("test", consumer.Value);
+        }
+        
         [TestMethod]
         public void InvalidOperationException_should_be_thrown_if_Static_is_called_after_GetValue()
         {
