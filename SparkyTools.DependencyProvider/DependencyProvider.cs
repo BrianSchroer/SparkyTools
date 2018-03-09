@@ -36,7 +36,7 @@ namespace SparkyTools.DependencyProvider
     ///     ]]></code> 
     ///     Constructor call from unit test:
     ///     <code><![CDATA[
-    ///         var testDate = DateTime.Parse("4/20/2018 4:20 PM");
+    ///         var testDate = new DateTime(2018, 7, 4, 15, 32, 00);
     ///         var foo = new Foo(mockBar.Object, new DependencyProvider<DateTime>(() => testDate));
     ///         
     ///         // or:
@@ -143,7 +143,7 @@ namespace SparkyTools.DependencyProvider
         }
 
         /// <summary>
-        /// Creates a Static <see cref="DependencyProvider{TDependency}"/> that returns <paramref name="value"/>
+        /// Creates a new <see cref="DependencyProvider{TDependency}"/> instance that returns <paramref name="value"/>.
         /// </summary>
         /// <param name="value">The value the created <see cref="DependencyProvider{TDependency}"/> should return</param>
         /// <returns>a <see cref="DependencyProvider{TDependency}"/> that returns <paramref name="value"/></returns>
@@ -153,18 +153,18 @@ namespace SparkyTools.DependencyProvider
         }
         
         /// <summary>
-        /// Creates a Static <see cref="DependencyProvider{TDependency}"/> that returns
-        /// a value from <paramref name="factory"/>
+        /// Creates a new <see cref="DependencyProvider{TDependency}"/> instance that returns
+        /// a value from a <paramref name="func"/>.
         /// </summary>
-        /// <param name="factory">
+        /// <param name="func">
         /// The function to call to provide the value for the created <see cref="DependencyProvider{TDependency}"/>
         /// </param>
         /// <returns>
-        /// a <see cref="DependencyProvider{TDependency}"/> that returns values from <paramref name="factory"/>
+        /// a <see cref="DependencyProvider{TDependency}"/> that returns values from <paramref name="func"/>
         /// </returns>
-        public static implicit operator DependencyProvider<TDependency>(Func<TDependency> factory)
+        public static implicit operator DependencyProvider<TDependency>(Func<TDependency> func)
         {
-            return new DependencyProvider<TDependency>(factory);
+            return new DependencyProvider<TDependency>(func);
         }
     }
 }

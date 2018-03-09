@@ -11,6 +11,8 @@
     <PackageIconUrl>https://raw.githubusercontent.com/BrianSchroer/SparkyTools/master/Sparky.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/BrianSchroer/SparkyTools</RepositoryUrl>
     <PackageTags>test, testing, unittest, unittesting, dependencyinjection</PackageTags>
+    <Version>1.1.0</Version>
+    <PackageReleaseNotes>Added implicit operators</PackageReleaseNotes>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard1.0\SparkyTools.DependencyProvider.xml</DocumentationFile>

@@ -32,33 +32,52 @@ A DependencyProvider instance can be created:
 * via a "callback function" constructor parameter:
     ```csharp
     var realTimeProvider = new DependencyProvider<DateTime>(() => DateTime.Now);
-    var fakeTimeProvider = new DependencyProvider<DateTime>(() => DateTime.Parse("4/20/2018 4:20 PM"));
+    var fakeTimeProvider = new DependencyProvider<DateTime>(() => new DateTime(2018, 7, 4, 15, 32, 00));
     ```
 * via the static *Create*(*callbackFunction*) method:
     ```csharp
     var realTimeProvider = DependencyProvider.Create(() => DateTime.Now);
-    var fakeTimeProvider = DependencyProvider.Create(() => DateTime.Parse("4/20/2018 4:20 PM"));
+    var fakeTimeProvider = DependencyProvider.Create(() => new DateTime(2018, 7, 4, 15, 32, 00));
     ```
 * via a static value constructor parameter:
     ```csharp
     var realTimeProvider = new DependencyProvider<DateTime>(DateTime.Now);
-    var fakeTimeProvider = new DependencyProvider<DateTime>(DateTime.Parse("4/20/2018 4:20 PM"));
+    var fakeTimeProvider = new DependencyProvider<DateTime>(new DateTime(2018, 7, 4, 15, 32, 00));
     ```
 * via the static *Create(staticValue)* method:
     ```csharp
     var realTimeProvider = DependencyProvider.Create(DateTime.Now);
-    var fakeTimeProvider = DependencyProvider.Create(DateTime.Parse("4/20/2018 4:20 PM"));
+    var fakeTimeProvider = DependencyProvider.Create(new DateTime(2018, 7, 4, 15, 32, 00));
     ```
-* via *implicit conversion*
+* via *implicit conversion*:
     ```csharp
-    DependencyProvider<DateTime> fakeTimeProvider = new DateTime(2018, 1, 4);
-    //C# is a bit less fluent about chained implicit conversions...  
-    DependencyProvider<DateTime> readTimeProvider = () => DateTime.Now(); 
-    
-    //most helpful when passing dependencies
-    var foo = new Foo(new DateTime(2018, 1, 4));
-    var fooRealtime = new Foo(() => DateTime.Now())
+    DependencyProvider<DateTime> fakeTimeProvider = new DateTime(2018, 7, 4, 15, 32, 00);
+    DependencyProvider<DateTime> realTimeProvider = () => DateTime.Now(); 
     ```
+
+The implicit conversion option makes for very nice, terse when declared inline for the constructor of a class using DependencyProvider, e.g.:
+
+```csharp
+    public class Foo
+    {
+        public Foo(IBar bar, DependencyProvider<DateTime> currentTimeProvider) { }
+    }
+
+    ...
+    // implicit conversion:
+    var fooWithRealTime = new Foo(bar, DateTime.Now());
+    var fooWithFakeTime = new Foo(bar, new DateTime(2018, 7, 4, 15, 32, 00));
+
+    // other syntaxes:
+    var fooWithRealTime2 = new Foo(bar, DependencyProvider.Create(DateTIme.Now));
+    var foowithFakeTime2 = new Foo(bar, new DependencyProvider<DateTime>(new DateTime(2018, 7, 4, 15, 32, 00)));
+```
+
+
+
+```csharp
+
+```
 
 The *DependencyProvider*.**Static()** method tells the provider to cache the first value
 returned by **GetValue()** and return that same value for all subsequent calls:
