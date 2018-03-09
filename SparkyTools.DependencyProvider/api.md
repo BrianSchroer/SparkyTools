@@ -51,11 +51,11 @@ A DependencyProvider instance can be created:
     ```
 * via *implicit conversion*:
     ```csharp
-    DependencyProvider<DateTime> fakeTimeProvider = new DateTime(2018, 7, 4, 15, 32, 00);
     DependencyProvider<DateTime> realTimeProvider = () => DateTime.Now(); 
+    DependencyProvider<DateTime> fakeTimeProvider = new DateTime(2018, 7, 4, 15, 32, 00);
     ```
 
-The implicit conversion option makes for very nice, terse when declared inline for the constructor of a class using DependencyProvider, e.g.:
+The implicit conversion option makes for very nice, terse syntax when declared inline for the constructor of a class using DependencyProvider, e.g.:
 
 ```csharp
     public class Foo
@@ -69,14 +69,8 @@ The implicit conversion option makes for very nice, terse when declared inline f
     var fooWithFakeTime = new Foo(bar, new DateTime(2018, 7, 4, 15, 32, 00));
 
     // other syntaxes:
-    var fooWithRealTime2 = new Foo(bar, DependencyProvider.Create(DateTIme.Now));
+    var fooWithRealTime2 = new Foo(bar, DependencyProvider.Create(DateTime.Now));
     var foowithFakeTime2 = new Foo(bar, new DependencyProvider<DateTime>(new DateTime(2018, 7, 4, 15, 32, 00)));
-```
-
-
-
-```csharp
-
 ```
 
 The *DependencyProvider*.**Static()** method tells the provider to cache the first value
