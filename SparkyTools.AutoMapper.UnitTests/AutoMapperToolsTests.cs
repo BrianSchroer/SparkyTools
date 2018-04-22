@@ -29,29 +29,34 @@ namespace SparkyTools.AutoMapper.UnitTests
         [TestMethod]
         public void MappedTo_should_map_to_destination_type()
         {
-            CreateMap();
+            CreateMap(map => map.IgnoreMember(x => x.Address));
 
             var dest = _source.MappedTo<Dest>();
 
-            _mapTester.AssertMappedValues(_source, dest);
-        }
-
-        [TestMethod]
-        public void Ignore_should_ignore_specified_member()
-        {
-            CreateMap(map => map.ForMember(x => x.Name).Ignore());
-
-            Dest dest = _mapTester.IgnoringMember(x => x.Name).AssertAutoMappedValues(_source);
-
-            Assert.IsNull(dest.Name);
+            _mapTester.IgnoringAllOtherMembers().AssertMappedValues(_source, dest);
         }
 
         [TestMethod]
         public void IgnoreMember_should_ignore_specified_member()
         {
-            CreateMap(map => map.IgnoreMember(x => x.Name));
+            CreateMap(map => map
+            .IgnoreMember(x => x.Name)
+            .IgnoreMember(x => x.Address));
 
-            Dest dest = _mapTester.IgnoringMember(x => x.Name).AssertAutoMappedValues(_source);
+            Dest dest = _mapTester
+                .IgnoringMember(x => x.Name)
+                .IgnoringMember(x => x.Address)
+                .AssertAutoMappedValues(_source);
+
+            Assert.IsNull(dest.Name);
+        }
+
+        [TestMethod]
+        public void IgnoreMembers_should_work_as_expected()
+        {
+            CreateMap(map => map.IgnoreMembers(x => x.Name, x => x.Address));
+
+            Dest dest = _mapTester.IgnoringMembers(x => x.Name, x => x.Address).AssertAutoMappedValues(_source);
 
             Assert.IsNull(dest.Name);
         }
@@ -59,33 +64,46 @@ namespace SparkyTools.AutoMapper.UnitTests
         [TestMethod]
         public void MapFrom_should_use_specified_source_callback()
         {
-            CreateMap(map => map.ForMember(x => x.Name).MapFrom(src => CombineNames(src)));
+            CreateMap(map => map
+                .IgnoreMember(x => x.Address)
+                .ForMember(x => x.Name).MapFrom(src => CombineNames(src)));
 
             _mapTester
                 .WhereMember(x => x.Name).ShouldEqualValue(CombineNames(_source))
+                .IgnoringMember(x => x.Address)
                 .AssertAutoMappedValues(_source);
         }
 
         [TestMethod]
         public void NullSubstitute_should_use_specified_substitute()
         {
-            CreateMap(map => map.ForMember(x => x.Name).NullSubstitute("Sparky"));
+            CreateMap(map => map
+                .ForMember(x => x.Name).NullSubstitute("Sparky")
+                .IgnoreMember(x => x.Address));
 
             _source.Name = "Brian";
-            _mapTester.AssertAutoMappedValues(_source);
+            _mapTester
+                .IgnoringMember(x => x.Address)
+                .AssertAutoMappedValues(_source);
 
             _source.Name = null;
+            Dest dest = _source.MappedTo<Dest>();
+            Assert.AreEqual("Sparky", dest.Name);
             _mapTester
                 .WhereMember(x => x.Name).ShouldEqualValue("Sparky")
+                .IgnoringMember(x => x.Address)
                 .AssertAutoMappedValues(_source);
         }
 
         [TestMethod]
         public void UseValue_should_call_specified_callback_function()
         {
-            CreateMap(map => map.ForMember(x => x.Id).UseValue(() => 123456));
+            CreateMap(map => map
+                .ForMember(x => x.Id).UseValue(() => 123456)
+                .IgnoreMember(x => x.Address));
 
             Dest dest = _source.MappedTo<Dest>();
+
             Assert.AreEqual(123456, dest.Id);
 
             //_mapTester
@@ -96,7 +114,9 @@ namespace SparkyTools.AutoMapper.UnitTests
         [TestMethod]
         public void UseValue_should_use_specified_value()
         {
-            CreateMap(map => map.ForMember(x => x.Id).UseValue(654321));
+            CreateMap(map => map
+                .ForMember(x => x.Id).UseValue(654321)
+                .IgnoreMember(x => x.Address));
 
             Dest dest = _source.MappedTo<Dest>();
             Assert.AreEqual(654321, dest.Id);
