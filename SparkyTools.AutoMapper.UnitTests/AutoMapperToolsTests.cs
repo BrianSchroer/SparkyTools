@@ -29,7 +29,7 @@ namespace SparkyTools.AutoMapper.UnitTests
         [TestMethod]
         public void MappedTo_should_map_to_destination_type()
         {
-            CreateMap(map => map.IgnoreMember(x => x.Address));
+            CreateStaticMap(map => map.IgnoreMember(x => x.Address));
 
             var dest = _source.MappedTo<Dest>();
 
@@ -37,9 +37,89 @@ namespace SparkyTools.AutoMapper.UnitTests
         }
 
         [TestMethod]
+        public void MappedTo_should_return_null_for_null_input()
+        {
+            CreateStaticMap(map => map.IgnoreMember(x => x.Address));
+
+            Source source = null;
+
+            var dest = source.MappedTo<Dest>();
+
+            Assert.IsNull(dest);
+        }
+
+        [TestMethod]
+        public void MappedTo_with_IMapper_should_map_to_destination_type()
+        {
+            IMapper mapper = CreateInstanceMap(map => map.IgnoreMember(x => x.Address));
+
+            var dest = _source.MappedTo<Dest>(mapper);
+
+            _mapTester.IgnoringAllOtherMembers().AssertMappedValues(_source, dest);
+        }
+
+        [TestMethod]
+        public void MappedTo_with_IMapper_should_return_null_for_null_input()
+        {
+            IMapper mapper = CreateInstanceMap(map => map.IgnoreMember(x => x.Address));
+
+            Source source = null;
+
+            var dest = source.MappedTo<Dest>(mapper);
+
+            Assert.IsNull(dest);
+        }
+
+        [TestMethod]
+        public void MappedToArrayOf_should_map_to_array_of_destination_type()
+        {
+            CreateStaticMap(map => map.IgnoreMember(x => x.Address));
+
+            var dest = (new[] { _source, _source, _source }).MappedToArrayOf<Dest>();
+
+            Assert.AreEqual(3, dest.Length);
+            _mapTester.IgnoringAllOtherMembers().AssertMappedValues(_source, dest[0]);
+        }
+
+        [TestMethod]
+        public void MappedToArrayOf_should_return_empty_array_for_null_input()
+        {
+            CreateStaticMap(map => map.IgnoreMember(x => x.Address));
+
+            Source[] sourceArray = null;
+
+            var dest = sourceArray.MappedToArrayOf<Dest>();
+
+            Assert.AreEqual(0, dest.Length);
+        }
+
+        [TestMethod]
+        public void MappedToArrayOf_with_IMapper_should_map_to_array_of_destination_type()
+        {
+            IMapper mapper = CreateInstanceMap(map => map.IgnoreMember(x => x.Address));
+
+            var dest = (new[] { _source, _source, _source }).MappedToArrayOf<Dest>(mapper);
+
+            Assert.AreEqual(3, dest.Length);
+            _mapTester.IgnoringAllOtherMembers().AssertMappedValues(_source, dest[0]); ;
+        }
+
+        [TestMethod]
+        public void MappedToArrayOf_with_IMapper_should_return_empty_array_for_null_input()
+        {
+            IMapper mapper = CreateInstanceMap(map => map.IgnoreMember(x => x.Address));
+
+            Source[] sourceArray = null;
+
+            var dest = sourceArray.MappedToArrayOf<Dest>(mapper);
+
+            Assert.AreEqual(0, dest.Length);
+        }
+
+        [TestMethod]
         public void IgnoreMember_should_ignore_specified_member()
         {
-            CreateMap(map => map
+            CreateStaticMap(map => map
             .IgnoreMember(x => x.Name)
             .IgnoreMember(x => x.Address));
 
@@ -54,7 +134,7 @@ namespace SparkyTools.AutoMapper.UnitTests
         [TestMethod]
         public void IgnoreMembers_should_work_as_expected()
         {
-            CreateMap(map => map.IgnoreMembers(x => x.Name, x => x.Address));
+            CreateStaticMap(map => map.IgnoreMembers(x => x.Name, x => x.Address));
 
             Dest dest = _mapTester.IgnoringMembers(x => x.Name, x => x.Address).AssertAutoMappedValues(_source);
 
@@ -64,7 +144,7 @@ namespace SparkyTools.AutoMapper.UnitTests
         [TestMethod]
         public void MapFrom_should_use_specified_source_callback()
         {
-            CreateMap(map => map
+            CreateStaticMap(map => map
                 .IgnoreMember(x => x.Address)
                 .ForMember(x => x.Name).MapFrom(src => CombineNames(src)));
 
@@ -77,7 +157,7 @@ namespace SparkyTools.AutoMapper.UnitTests
         [TestMethod]
         public void NullSubstitute_should_use_specified_substitute()
         {
-            CreateMap(map => map
+            CreateStaticMap(map => map
                 .ForMember(x => x.Name).NullSubstitute("Sparky")
                 .IgnoreMember(x => x.Address));
 
@@ -98,7 +178,7 @@ namespace SparkyTools.AutoMapper.UnitTests
         [TestMethod]
         public void UseValue_should_call_specified_callback_function()
         {
-            CreateMap(map => map
+            CreateStaticMap(map => map
                 .ForMember(x => x.Id).UseValue(() => 123456)
                 .IgnoreMember(x => x.Address));
 
@@ -114,7 +194,7 @@ namespace SparkyTools.AutoMapper.UnitTests
         [TestMethod]
         public void UseValue_should_use_specified_value()
         {
-            CreateMap(map => map
+            CreateStaticMap(map => map
                 .ForMember(x => x.Id).UseValue(654321)
                 .IgnoreMember(x => x.Address));
 
@@ -131,7 +211,7 @@ namespace SparkyTools.AutoMapper.UnitTests
             return $"{source.FirstName} {source.LastName}";
         }
 
-        private void CreateMap(Action<IMappingExpression<Source, Dest>> callback = null)
+        private void CreateStaticMap(Action<IMappingExpression<Source, Dest>> callback = null)
         {
             Mapper.Initialize(cfg =>
             {
@@ -140,6 +220,18 @@ namespace SparkyTools.AutoMapper.UnitTests
             });
 
             Mapper.AssertConfigurationIsValid();
+        }
+
+        private IMapper CreateInstanceMap(Action<IMappingExpression<Source, Dest>> callback = null)
+        {
+            var config = new MapperConfiguration(cfg => {
+                IMappingExpression<Source, Dest> mappingExpression = cfg.CreateMap<Source, Dest>();
+                callback?.Invoke(mappingExpression);
+            });
+
+            IMapper mapper = config.CreateMapper();
+
+            return mapper;
         }
     }
 }

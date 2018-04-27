@@ -41,13 +41,19 @@ can be coded as:
 ```csharp
 .IgnoreMember(dest => dest.Useless)
 ```
+...or, to ignore multiple members:
+```csharp
+.IgnoringMembers(dest => dest.Useless, dest => dest.Useless2, dest => dest.Useless3)
+```
 
-#### MappedTo extension method ####
+#### MappedTo extension methods ####
 The package also contains an extension method that allows you to replace
 ```csharp
-    Bar bar = Mapper.Map<Foo, Bar>(foo);
+    Bar bar = Mapper.Map<Foo, Bar>(foo); // with static Mapper
+    Bar bar = mapper.Map<foo, Bar>(foo): // with IMapper instance
 ```
 with:
 ```csharp
-    Bar bar = foo.MappedTo<Bar>();
+    Bar bar = foo.MappedTo<Bar>(); // with static Mapper
+    Bar bar = foo.MappedTo<Bar>(mapper); // with IMapper instance
 ```

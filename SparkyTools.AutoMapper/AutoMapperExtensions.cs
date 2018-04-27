@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace SparkyTools.AutoMapper
@@ -11,7 +13,7 @@ namespace SparkyTools.AutoMapper
     public static class AutoMapperExtensions
     {
         /// <summary>
-        /// Use AutoMapper to map object to another type, using an alternate syntax.
+        /// Use AutoMapper with static Mapper to map object to another type, using an alternate syntax.
         /// Instead of:
         /// <![CDATA[
         ///     Bar bar = Mapper.Map<Foo, Bar>(foo);
@@ -26,7 +28,58 @@ namespace SparkyTools.AutoMapper
         /// <returns>A new instance of type <typeparamref name="TResult"/>.</returns>
         public static TResult MappedTo<TResult>(this object source)
         {
-            return (TResult)Mapper.Map(source, source.GetType(), typeof(TResult));
+            return (source == null)
+                ? default(TResult)
+                : (TResult)Mapper.Map(source, source.GetType(), typeof(TResult));
+        }
+
+        /// <summary>
+        /// Use AutoMapper to map to map object to another type, using an alternate syntax.
+        /// Instead of:
+        /// <![CDATA[
+        ///     Bar bar = Mapper.Map<Foo, Bar>(foo);
+        /// ]]>
+        /// ...you can code:
+        /// <![CDATA[
+        ///     Bar bar = foo.MappedTo<Bar>();
+        /// ]]>
+        /// </summary>
+        /// <typeparam name="TResult">The result type.</typeparam>
+        /// <param name="source">The source object.</param>
+        /// <param name="mapper">The <see cref="IMapper"/>.</param>
+        /// <returns>A new instance of type <typeparamref name="TResult"/>.</returns>
+        public static TResult MappedTo<TResult>(this object source, IMapper mapper)
+        {
+            return (source == null)
+                ? default(TResult)
+                : (TResult)mapper.Map(source, source.GetType(), typeof(TResult));
+        }
+
+        /// <summary>
+        /// Map <see cref="IEnumerable{T}"/> to array of <typeparamref name="TResult"/> using static Mapper.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="sourceEnumerable">The source enumerable.</param>
+        /// <returns>Array of <typeparamref name="TResult"/>(empty array if <paramref name="sourceEnumerable"/> is null.)</returns>
+        public static TResult[] MappedToArrayOf<TResult>(this IEnumerable<object> sourceEnumerable)
+        {
+            return (sourceEnumerable == null)
+                ? new TResult[0]
+                : sourceEnumerable.Select(MappedTo<TResult>).ToArray();
+        }
+
+        /// <summary>
+        /// Map <see cref="IEnumerable{T}"/> to array of <typeparamref name="TResult"/> using <see cref="IMapper"/> instance.
+        /// </summary>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="sourceEnumerable">The source enumerable.</param>
+        /// <param name="mapper">The <see cref="IMapper"/>.</param>
+        /// <returns>Array of <typeparamref name="TResult"/>(empty array if <paramref name="sourceEnumerable"/> is null.)</returns>
+        public static TResult[] MappedToArrayOf<TResult>(this IEnumerable<object> sourceEnumerable, IMapper mapper)
+        {
+            return (sourceEnumerable == null)
+                ? new TResult[0]
+                : sourceEnumerable.Select(x => x.MappedTo<TResult>(mapper)).ToArray();
         }
 
         /// <summary>
