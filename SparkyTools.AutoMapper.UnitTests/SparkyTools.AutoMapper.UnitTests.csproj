@@ -17,8 +17,4 @@
     <ProjectReference Include="..\SparkyTools.AutoMapper\SparkyTools.AutoMapper.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="TestClasses\" />
-  </ItemGroup>
-
 </Project>

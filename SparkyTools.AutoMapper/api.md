@@ -57,3 +57,6 @@ with:
     Bar bar = foo.MappedTo<Bar>(); // with static Mapper
     Bar bar = foo.MappedTo<Bar>(mapper); // with IMapper instance
 ```
+
+#### AutoMapperConfigurationValidity ####
+The **Assert** methods in this static class wrap **Mapper.AssertConfigurationIsValid** and **IConfigurationProvider.AssertConfigurationIsValid** with an exception handler that provides suggestions for dealing with unmapped properties.
