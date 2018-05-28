@@ -10,11 +10,16 @@
     <PackageIconUrl>https://raw.githubusercontent.com/BrianSchroer/SparkyTools/master/Sparky.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/BrianSchroer/SparkyTools</RepositoryUrl>
     <PackageReleaseNotes>Added AppSettings.DependencyProvider()</PackageReleaseNotes>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageTags>config, web.config, app.config, xml</PackageTags>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Authors>Brian Schroer</Authors>
     <Company>Brian Schroer</Company>
+    <Product>SparkyTools.XmlConfig</Product>
+    <PackageId>SparkyTools.XmlConfig</PackageId>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -22,7 +27,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SparkyTools.DependencyProvider" Version="1.0.0" />
+    <PackageReference Include="SparkyTools.DependencyProvider" Version="1.1.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.4.1" />
   </ItemGroup>
 

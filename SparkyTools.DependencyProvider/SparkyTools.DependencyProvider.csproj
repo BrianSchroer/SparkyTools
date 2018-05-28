@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Authors>Brian Schroer</Authors>
     <Company>Brian Schroer</Company>
     <Description>Ludicrously lightweight dependency wrapper/provider to improve testability of classes that use dependencies that aren't easily mockable (e.g. System.DateTime).</Description>
@@ -13,6 +13,9 @@
     <PackageTags>test, testing, unittest, unittesting, dependencyinjection</PackageTags>
     <Version>1.1.0</Version>
     <PackageReleaseNotes>Added implicit operators</PackageReleaseNotes>
+    <Product>SparkyTools.DependencyProvider</Product>
+    <PackageId>SparkyTools.DependencyProvider</PackageId>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard1.0\SparkyTools.DependencyProvider.xml</DocumentationFile>

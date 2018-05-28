@@ -1,6 +1,6 @@
 ﻿
 _see also_:
-* **[SparkyTools.XmlConfig.Fx](https://www.nuget.org/packages/SparkyTools.XmlConfig.Fx/)**, which supports .NET framework v.4-4.5.1
+* **[SparkyTools.XmlConfig](https://www.nuget.org/packages/SparkyTools.XmlConfig/)**, which supports .NET Core and .NET framework v.4.6 and above
 * the rest of the [**"Sparky suite"** of .NET utilities and test helpers](https://www.nuget.org/profiles/BrianSchroer)
 ---
 

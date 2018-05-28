@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>SparkyTools.XmlConfig.Fx</id>
+    <version>1.0.0</version>
+    <title>SparkyTools.XmlConfig.Fx</title>
+    <authors>Brian Schroer</authors>
+    <owners>Brian Schroer</owners>
+    <licenseUrl>https://github.com/BrianSchroer/SparkyTools/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/BrianSchroer/SparkyTools</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/BrianSchroer/SparkyTools/master/Sparky.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Makes it easy to load a strongly-typed object (or IList of objects) from a custom web.config or app.config file section without having to write a custom IConfigurationSectionHandler implementation.</description>
+    <releaseNotes>New package created because SparkyTools.XmlConfig only supports .NET Framework 4.6 and above</releaseNotes>
+    <copyright>Copyright © Brian Schroer 2018</copyright>
+    <tags>config, web.config, app.config, xml</tags>
+  </metadata>
+</package>
