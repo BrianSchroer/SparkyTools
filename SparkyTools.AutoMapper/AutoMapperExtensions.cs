@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 namespace SparkyTools.AutoMapper
 {
     /// <summary>
-    /// AutoMapper extension methods, inspired by a blog post by Matt Honeycutt: 
+    /// AutoMapper extension methods, inspired by a blog post by Matt Honeycutt:
     /// https://www.trycatchfail.com/2010/10/04/a-more-fluent-api-for-automapper/
     /// </summary>
     public static class AutoMapperExtensions
@@ -83,6 +83,37 @@ namespace SparkyTools.AutoMapper
         }
 
         /// <summary>
+        /// Copy values from existing <typeparamref name="TSource"/> instance to existing <see typeparamref="TResult"/> instance.
+        /// </summary>
+        /// <typeparam name="TSource">The source type.</typeparam>
+        /// <typeparam name="TResult">The result type.</typeparam>
+        /// <param name="result">The <typeparamref name="TResult"/> instance.</param>
+        /// <param name="source">The <typeparamref name="TSource"/> instance.</param>
+        /// <returns>The updated <typeparamref name="TResult"/> instance.</returns>
+        public static TResult CopyValuesFrom<TSource, TResult>(this TResult result, TSource source)
+        {
+            Mapper.Map(source, result);
+
+            return result;
+        }
+
+        /// <summary>
+        /// Copy values from existing <typeparamref name="TSource"/> instance to existing <see typeparamref="TResult"/> instance.
+        /// </summary>
+        /// <typeparam name="TSource">The source type.</typeparam>
+        /// <typeparam name="TResult">The result type.</typeparam>
+        /// <param name="result">The <typeparamref name="TResult"/> instance.</param>
+        /// <param name="source">The <typeparamref name="TSource"/> instance.</param>
+        /// <param name="mapper">The <see cref="IMapper"/>.</param>
+        /// <returns>The updated <typeparamref name="TResult"/> instance.</returns>
+        public static TResult CopyValuesFrom<TSource, TResult>(this TResult result, TSource source, IMapper mapper)
+        {
+            mapper.Map(source, result);
+
+            return result;
+        }
+
+        /// <summary>
         /// Creates a <see cref="MemberMappingExpression{TSource, TDestination}"/> instance against which
         /// <see cref="MemberMappingExpression{TSource, TDestination}.MapFrom{TResult}(Expression{Func{TSource, TResult}})"/>,
         /// <see cref="MemberMappingExpression{TSource, TDestination}.UseValue{TResult}(Func{TResult})"/>,
@@ -137,7 +168,7 @@ namespace SparkyTools.AutoMapper
         /// </returns>
         /// <example>
         /// <![CDATA[
-        ///     Mapper.Initialize(cfg => 
+        ///     Mapper.Initialize(cfg =>
         ///         cfg.CreateMap<Foo, Bar>()
         ///         .IgnoreMember(dest => dest.Baz);
         /// ]]>
@@ -182,7 +213,7 @@ namespace SparkyTools.AutoMapper
         /// </returns>
         /// <example>
         /// <![CDATA[
-        ///     Mapper.Initialize(cfg => 
+        ///     Mapper.Initialize(cfg =>
         ///         cfg.CreateMap<Foo, Bar>()
         ///         .IgnoreMembers(dest => dest.Baz, dest => dest.Qux);
         /// ]]>

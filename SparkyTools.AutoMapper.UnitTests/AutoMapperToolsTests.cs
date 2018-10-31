@@ -12,11 +12,13 @@ namespace SparkyTools.AutoMapper.UnitTests
     {
         private MapTester<Source, Dest> _mapTester;
         private Source _source;
+        private RandomValuesHelper _randomValuesHelper;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _source = new RandomValuesHelper().CreateInstanceWithRandomValues<Source>();
+            _randomValuesHelper = new RandomValuesHelper();
+            _source = _randomValuesHelper.CreateInstanceWithRandomValues<Source>();
             _mapTester = MapTester.ForMap<Source, Dest>();
         }
 
@@ -114,6 +116,34 @@ namespace SparkyTools.AutoMapper.UnitTests
             var dest = sourceArray.MappedToArrayOf<Dest>(mapper);
 
             Assert.AreEqual(0, dest.Length);
+        }
+
+        [TestMethod]
+        public void CopyValuesFrom_should_copy_source_values_to_result_values()
+        {
+            CreateStaticMap(map => map.IgnoreMember(x => x.Address));
+
+            var dest = _randomValuesHelper.CreateInstanceWithRandomValues<Dest>();
+
+            var dest2 = dest.CopyValuesFrom(_source);
+
+            Assert.AreSame(dest, dest2);
+
+            _mapTester.IgnoringMember(d => d.Address).AssertMappedValues(_source, dest);
+        }
+
+        [TestMethod]
+        public void CopyValuesFrom_should_copy_source_values_to_result_values_with_instance_mapper()
+        {
+            IMapper mapper = CreateInstanceMap(map => map.IgnoreMember(x => x.Address));
+
+            var dest = _randomValuesHelper.CreateInstanceWithRandomValues<Dest>();
+
+            var dest2 = dest.CopyValuesFrom(_source, mapper);
+
+            Assert.AreSame(dest, dest2);
+
+            _mapTester.IgnoringMember(d => d.Address).AssertMappedValues(_source, dest);
         }
 
         [TestMethod]
