@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.3.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
+    <PackageReference Include="SparkyTestHelpers.AutoMapper" Version="1.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SparkyTestHelpers.Mapping">
+      <HintPath>..\..\..\Users\brian\.nuget\packages\sparkytesthelpers.mapping\1.7.0\lib\netstandard1.5\SparkyTestHelpers.Mapping.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

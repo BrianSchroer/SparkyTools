@@ -6,7 +6,7 @@ namespace SparkyTools.AutoMapper
 {
     /// <summary>
     /// Class used by this project's AutoMapper extension methods, inspired by a blog
-    /// post by Matt Honeycutt: 
+    /// post by Matt Honeycutt:
     /// https://www.trycatchfail.com/2010/10/04/a-more-fluent-api-for-automapper/
     /// </summary>
     /// <typeparam name="TSource">Source ("map from") type.</typeparam>
@@ -47,7 +47,7 @@ namespace SparkyTools.AutoMapper
         /// </returns>
         /// <example>
         /// <![CDATA[
-        ///     Mapper.Initialize(cfg => 
+        ///     Mapper.Initialize(cfg =>
         ///         cfg.CreateMap<Foo, Bar>()
         ///         .ForMember(dest => dest.Baz).Ignore());
         /// ]]>
@@ -80,7 +80,7 @@ namespace SparkyTools.AutoMapper
         /// </returns>
         /// <example>
         /// <![CDATA[
-        ///     Mapper.Initialize(cfg => 
+        ///     Mapper.Initialize(cfg =>
         ///         cfg.CreateMap<Foo, Bar>()
         ///         .ForMember(dest => dest.Baz).MapFrom(src => src.Qux);
         /// ]]>
@@ -112,12 +112,12 @@ namespace SparkyTools.AutoMapper
         /// </returns>
         /// <example>
         /// <![CDATA[
-        ///     Mapper.Initialize(cfg => 
+        ///     Mapper.Initialize(cfg =>
         ///         cfg.CreateMap<Foo, Bar>()
         ///         .ForMember(dest => dest.Baz).NullSubstitute("");
         /// ]]>
         /// </example>
-        public IMappingExpression<TSource, TDestination> NullSubstitute<TResult>(TResult value) => 
+        public IMappingExpression<TSource, TDestination> NullSubstitute<TResult>(TResult value) =>
             _mappingExpression.ForMember(_member, opt => opt.NullSubstitute(value));
 
         /// <summary>
@@ -140,13 +140,14 @@ namespace SparkyTools.AutoMapper
         /// </returns>
         /// <example>
         /// <![CDATA[
-        ///     Mapper.Initialize(cfg => 
+        ///     Mapper.Initialize(cfg =>
         ///         cfg.CreateMap<Foo, Bar>()
         ///         .ForMember(dest => dest.).UseValue(() => DateTime.Now);
         /// ]]>
         /// </example>
-        public IMappingExpression<TSource, TDestination> UseValue<TResult>(Func<TResult> valueGetter) => 
-            _mappingExpression.ForMember(_member, opt => opt.UseValue(valueGetter()));
+        [Obsolete("AutoMapper's \"UseValue\" method was removed with version 8.0. The preferred alternative is \".MapFrom(src => value)\" or \".MapFrom(_ => value)\".")]
+        public IMappingExpression<TSource, TDestination> UseValue<TResult>(Func<TResult> valueGetter) =>
+            _mappingExpression.ForMember(_member, opt => opt.MapFrom(_ => valueGetter()));
 
         /// <summary>
         /// Maps a value to a destination member,
@@ -168,12 +169,12 @@ namespace SparkyTools.AutoMapper
         /// </returns>
         /// <example>
         /// <![CDATA[
-        ///     Mapper.Initialize(cfg => 
+        ///     Mapper.Initialize(cfg =>
         ///         cfg.CreateMap<Foo, Bar>()
         ///         .ForMember(dest => dest.CurrentTime).UseValue(() => DateTime.Now);
         /// ]]>
         /// </example>
-        public IMappingExpression<TSource, TDestination> UseValue<TResult>(TResult value) => 
-            _mappingExpression.ForMember(_member, opt => opt.UseValue(value));
+        public IMappingExpression<TSource, TDestination> UseValue<TResult>(TResult value) =>
+            _mappingExpression.ForMember(_member, opt => opt.MapFrom(_ => value));
     }
 }
