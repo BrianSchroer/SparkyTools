@@ -14,13 +14,13 @@ namespace SparkyTools.DependencyProvider.UnitTests
         {
             int callCount = 0;
 
-            var provider = new DependencyProvider<int>(() => 
+            var provider = new DependencyProvider<int>(() =>
             {
                 callCount++;
                 return callCount;
             });
 
-            Enumerable.Range(1, 5).TestEach(scenarioCount => 
+            Enumerable.Range(1, 5).TestEach(scenarioCount =>
             {
                 Assert.AreEqual(scenarioCount, provider.GetValue());
                 Assert.AreEqual(scenarioCount, callCount);
@@ -84,10 +84,10 @@ namespace SparkyTools.DependencyProvider.UnitTests
         public void DependencyProvider_created_with_implicit_conversion_should_have_converted_value()
         {
             DependencyProvider<decimal> provider = 56m;
-            
+
             Assert.AreEqual(56m, provider.GetValue());
         }
-        
+
         [TestMethod]
         public void DependencyProvider_created_with_implicit_conversion_from_func_should_have_converted_value()
         {
@@ -99,19 +99,19 @@ namespace SparkyTools.DependencyProvider.UnitTests
             };
 
             DependencyProvider<float> provider = factory;
-            
+
             Assert.AreEqual(42f, provider.GetValue());
             Assert.AreEqual(1, callCount);
         }
-        
+
         [TestMethod]
         public void DependencyProvider_consumer_created_with_implicit_conversion_should_have_converted_value()
         {
             var consumer = new Consumer("test");
-            
+
             Assert.AreEqual("test", consumer.Value);
         }
-        
+
         [TestMethod]
         public void InvalidOperationException_should_be_thrown_if_Static_is_called_after_GetValue()
         {
@@ -143,17 +143,38 @@ namespace SparkyTools.DependencyProvider.UnitTests
             });
         }
 
+        [TestMethod]
+        public void DependencyProvider_should_work_with_interface()
+        {
+            var provider = new DependencyProvider<string>("test");
+
+            var consumer = new Consumer2(provider);
+
+            Assert.AreEqual("test", consumer.Value);
+        }
+
         private class Consumer
         {
-            private readonly DependencyProvider<string> valueProvider;
+            private readonly DependencyProvider<string> _valueProvider;
 
-            /// <inheritdoc />
             public Consumer(DependencyProvider<string> valueProvider)
             {
-                this.valueProvider = valueProvider;
+                _valueProvider = valueProvider;
             }
 
-            public string Value => valueProvider.GetValue();
+            public string Value => _valueProvider.GetValue();
+        }
+
+        private class Consumer2
+        {
+            private readonly IDependencyProvider<string> _valueProvider;
+
+            public Consumer2(IDependencyProvider<string> valueProvider)
+            {
+                _valueProvider = valueProvider;
+            }
+
+            public string Value => _valueProvider.GetValue();
         }
     }
 }

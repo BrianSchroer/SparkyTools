@@ -5,14 +5,14 @@
     <Authors>Brian Schroer</Authors>
     <Company>Brian Schroer</Company>
     <Description>Ludicrously lightweight dependency wrapper/provider to improve testability of classes that use dependencies that aren't easily mockable (e.g. System.DateTime).</Description>
-    <Copyright>Copyright © Brian Schroer 2018</Copyright>
+    <Copyright>Copyright © Brian Schroer 2019</Copyright>
     <PackageLicenseUrl>https://github.com/BrianSchroer/SparkyTools/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/BrianSchroer/SparkyTools</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/BrianSchroer/SparkyTools/master/Sparky.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/BrianSchroer/SparkyTools</RepositoryUrl>
     <PackageTags>test, testing, unittest, unittesting, dependencyinjection</PackageTags>
-    <Version>1.1.0</Version>
-    <PackageReleaseNotes>Added implicit operators</PackageReleaseNotes>
+    <Version>1.2.0</Version>
+    <PackageReleaseNotes>v1.2 Added IDependencyProvider interface</PackageReleaseNotes>
     <Product>SparkyTools.DependencyProvider</Product>
     <PackageId>SparkyTools.DependencyProvider</PackageId>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>

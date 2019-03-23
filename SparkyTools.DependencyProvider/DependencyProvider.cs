@@ -14,13 +14,13 @@ namespace SparkyTools.DependencyProvider
     ///         {
     ///             private readonly IBar _bar;
     ///             private readonly DependencyProvider<DateTime> _currentTimeProvider;
-    ///         
-    ///             public Foo(IBar bar, DependencyProvider<DateTime> currentTimeProvider) 
+    ///
+    ///             public Foo(IBar bar, DependencyProvider<DateTime> currentTimeProvider)
     ///             {
     ///                 _bar = bar;
     ///                 _getDate = currentTimeProvider;
     ///             }
-    ///         
+    ///
     ///             public void DoSomethingWithBazAndDate()
     ///             {
     ///                 _bar.DoSomethingWithDate(_currentTimeProvider.GetValue());
@@ -30,20 +30,20 @@ namespace SparkyTools.DependencyProvider
     ///     Constructor call from production code:
     ///     <code><![CDATA[
     ///         var foo = new Foo(bar, new DependencyProvider<DateTime>(() => DateTime.Now));
-    ///         
+    ///
     ///         // or:
     ///         // var foo = new Foo(bar, DependencyProvider.Create(() => DateTime.Now));
-    ///     ]]></code> 
+    ///     ]]></code>
     ///     Constructor call from unit test:
     ///     <code><![CDATA[
     ///         var testDate = new DateTime(2018, 7, 4, 15, 32, 00);
     ///         var foo = new Foo(mockBar.Object, new DependencyProvider<DateTime>(() => testDate));
-    ///         
+    ///
     ///         // or:
     ///         // var foo = new Foo(bar, DependencyProvider.Create(() => testDate));
     ///     ]]></code>
     /// </example>
-    public class DependencyProvider<TDependency>
+    public class DependencyProvider<TDependency> : IDependencyProvider<TDependency>
     {
         private static readonly object _instanceLock = new object();
         private static readonly Dictionary<string, TDependency> _staticDictionary = new Dictionary<string, TDependency>();
@@ -151,7 +151,7 @@ namespace SparkyTools.DependencyProvider
         {
             return new DependencyProvider<TDependency>(value);
         }
-        
+
         /// <summary>
         /// Creates a new <see cref="DependencyProvider{TDependency}"/> instance that returns
         /// a value from a <paramref name="func"/>.
