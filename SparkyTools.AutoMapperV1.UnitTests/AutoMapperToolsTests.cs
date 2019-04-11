@@ -1,12 +1,13 @@
-﻿using AutoMapper;
-using System;
+﻿using System;
 using System.Threading;
+using AutoMapper;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SparkyTools.AutoMapper.UnitTests.TestClasses;
-using SparkyTestHelpers.Mapping;
 using SparkyTestHelpers.AutoMapper;
+using SparkyTestHelpers.Mapping;
+using SparkyTools.AutoMapper;
+using SparkyTools.AutoMapperV1.UnitTests.TestClasses;
 
-namespace SparkyTools.AutoMapper.UnitTests
+namespace SparkyTools.AutoMapperV1.UnitTests
 {
     [TestClass]
     public class AutoMapperToolsTests

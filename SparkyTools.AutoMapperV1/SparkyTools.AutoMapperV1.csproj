@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <AssemblyName>SparkyTools.AutoMapper</AssemblyName>
+    <RootNamespace>SparkyTools.AutoMapper</RootNamespace>
+    <PackageId>SparkyTools.AutoMapper</PackageId>
+    <Version>1.5.0</Version>
+    <Authors>Brian Schroer</Authors>
+    <Company>Brian SchroerBrian Schroer</Company>
+    <Description>AutoMapper syntax helpers</Description>
+    <Copyright>Copyright © Brian Schroer 2019</Copyright>
+    <PackageLicenseUrl>https://github.com/BrianSchroer/SparkyTools/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/BrianSchroer/SparkyTools</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/BrianSchroer/SparkyTools/master/Sparky.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/BrianSchroer/SparkyTools</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+  </ItemGroup>
+
+</Project>

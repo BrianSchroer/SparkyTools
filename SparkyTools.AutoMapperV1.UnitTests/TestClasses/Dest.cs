@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace SparkyTools.AutoMapper.UnitTests.TestClasses
+namespace SparkyTools.AutoMapperV1.UnitTests.TestClasses
 {
-    public class Dest 
+    public class Dest
     {
         public int Id { get; set; }
         public string Name { get; set; }

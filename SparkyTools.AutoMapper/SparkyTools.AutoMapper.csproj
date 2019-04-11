@@ -5,17 +5,17 @@
     <Authors>Brian Schroer</Authors>
     <Company>Brian Schroer</Company>
     <Description>AutoMapper syntax helpers</Description>
-    <Copyright>Copyright © Brian Schroer 2018</Copyright>
+    <Copyright>Copyright © Brian Schroer 2019</Copyright>
     <PackageLicenseUrl>https://github.com/BrianSchroer/SparkyTools/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/BrianSchroer/SparkyTools</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/BrianSchroer/SparkyTools/master/Sparky.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/BrianSchroer/SparkyTools</RepositoryUrl>
     <PackageTags>mapping, automapper</PackageTags>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.1.0</AssemblyVersion>
-    <FileVersion>2.0.1.0</FileVersion>
+    <AssemblyVersion>2.0.2.0</AssemblyVersion>
+    <FileVersion>2.0.2.0</FileVersion>
     <PackageReleaseNotes>v2.0 - Upgraded to .NET Standard 2.0, AutoMapper 8.0 (AutoMapper 8 has breaking changes from v7.)</PackageReleaseNotes>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
     <Product>SparkyTools.AutoMapper</Product>
     <PackageId>SparkyTools.AutoMapper</PackageId>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>

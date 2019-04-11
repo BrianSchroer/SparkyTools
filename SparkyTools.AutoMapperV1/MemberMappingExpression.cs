@@ -147,7 +147,6 @@ namespace SparkyTools.AutoMapper
         ///         .ForMember(dest => dest.).UseValue(() => DateTime.Now);
         /// ]]>
         /// </example>
-        [Obsolete("AutoMapper's \"UseValue\" method was removed with version 8.0. The preferred alternative is \".MapFrom(src => value)\" or \".MapFrom(_ => value)\".")]
         public IMappingExpression<TSource, TDestination> UseValue<TResult>(Func<TResult> valueGetter) =>
             _mappingExpression.ForMember(_member, opt => opt.MapFrom(_ => valueGetter()));
 
@@ -176,7 +175,7 @@ namespace SparkyTools.AutoMapper
         ///         .ForMember(dest => dest.CurrentTime).UseValue(() => DateTime.Now);
         /// ]]>
         /// </example>
-        [Obsolete("Please use \".UseValue(_ => value)\".")]
+        [Obsolete("Please use \".MapFrom(_ => value)\" or \".UseValue(_ => value)\".")]
         public IMappingExpression<TSource, TDestination> UseValue<TResult>(TResult value)
         {
             if (typeof(TResult) == _dateTimeType)

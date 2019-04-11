@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SparkyTools.AutoMapper.UnitTests.TestClasses
+namespace SparkyTools.AutoMapperV1.UnitTests.TestClasses
 {
     public class Source
     {

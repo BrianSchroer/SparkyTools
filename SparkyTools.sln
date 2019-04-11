@@ -33,7 +33,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.XmlConfig.Fx.Un
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.XmlConfig.Fx", "SparkyTools.XmlConfig.Fx\SparkyTools.XmlConfig.Fx.csproj", "{BB8823EE-6E64-4916-AE0F-1DCE1D867849}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.AutoMapperUpgrade.UnitTests", "SparkyTools.AutoMapperUpgrade.UnitTests\SparkyTools.AutoMapperUpgrade.UnitTests.csproj", "{BED0CD1C-20DF-4BEA-8EA1-750E40C1D0DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SparkyTools.AutoMapperUpgrade.UnitTests", "SparkyTools.AutoMapperUpgrade.UnitTests\SparkyTools.AutoMapperUpgrade.UnitTests.csproj", "{BED0CD1C-20DF-4BEA-8EA1-750E40C1D0DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.AutoMapperV1", "SparkyTools.AutoMapperV1\SparkyTools.AutoMapperV1.csproj", "{869B339E-5ABE-43D2-AECF-35ACBC34661C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkyTools.AutoMapperV1.UnitTests", "SparkyTools.AutoMapperV1.UnitTests\SparkyTools.AutoMapperV1.UnitTests.csproj", "{BB544423-6EC2-4763-B7B1-28D2C99356F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +81,14 @@ Global
 		{BED0CD1C-20DF-4BEA-8EA1-750E40C1D0DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BED0CD1C-20DF-4BEA-8EA1-750E40C1D0DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BED0CD1C-20DF-4BEA-8EA1-750E40C1D0DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{869B339E-5ABE-43D2-AECF-35ACBC34661C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{869B339E-5ABE-43D2-AECF-35ACBC34661C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{869B339E-5ABE-43D2-AECF-35ACBC34661C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{869B339E-5ABE-43D2-AECF-35ACBC34661C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB544423-6EC2-4763-B7B1-28D2C99356F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB544423-6EC2-4763-B7B1-28D2C99356F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB544423-6EC2-4763-B7B1-28D2C99356F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB544423-6EC2-4763-B7B1-28D2C99356F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +103,8 @@ Global
 		{13550DCE-1123-4C2E-B302-B7B99593DCFF} = {C1FE506B-E36B-47D9-A448-80D181EAB758}
 		{BB8823EE-6E64-4916-AE0F-1DCE1D867849} = {C1FE506B-E36B-47D9-A448-80D181EAB758}
 		{BED0CD1C-20DF-4BEA-8EA1-750E40C1D0DE} = {93E0EC41-88A0-4495-854D-87984D6DEABE}
+		{869B339E-5ABE-43D2-AECF-35ACBC34661C} = {93E0EC41-88A0-4495-854D-87984D6DEABE}
+		{BB544423-6EC2-4763-B7B1-28D2C99356F6} = {93E0EC41-88A0-4495-854D-87984D6DEABE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {778186D8-DAD3-464A-8A7E-FE65CBB1E149}

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using System;
+using System.Text;
 
 namespace SparkyTools.AutoMapper
 {
