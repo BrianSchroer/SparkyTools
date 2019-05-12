@@ -25,12 +25,17 @@ namespace SparkyTools.AutoMapper
         /// </summary>
         /// <typeparam name="TResult">The result type.</typeparam>
         /// <param name="source">The source object.</param>
+        /// <param name="afterMap">Optional callback action to do something with the mapped result.</param>
         /// <returns>A new instance of type <typeparamref name="TResult"/>.</returns>
-        public static TResult MappedTo<TResult>(this object source)
+        public static TResult MappedTo<TResult>(this object source, Action<TResult> afterMap = null)
         {
-            return (source == null)
+            var result = (source == null)
                 ? default(TResult)
                 : (TResult)Mapper.Map(source, source.GetType(), typeof(TResult));
+
+            afterMap?.Invoke(result);
+
+            return result;
         }
 
         /// <summary>
@@ -47,12 +52,17 @@ namespace SparkyTools.AutoMapper
         /// <typeparam name="TResult">The result type.</typeparam>
         /// <param name="source">The source object.</param>
         /// <param name="mapper">The <see cref="IMapper"/>.</param>
+        /// <param name="afterMap">Optional callback action to do something with the mapped result.</param>
         /// <returns>A new instance of type <typeparamref name="TResult"/>.</returns>
-        public static TResult MappedTo<TResult>(this object source, IMapper mapper)
+        public static TResult MappedTo<TResult>(this object source, IMapper mapper, Action<TResult> afterMap = null)
         {
-            return (source == null)
+            var result = (source == null)
                 ? default(TResult)
                 : (TResult)mapper.Map(source, source.GetType(), typeof(TResult));
+
+            afterMap?.Invoke(result);
+
+            return result;
         }
 
         /// <summary>
@@ -60,12 +70,13 @@ namespace SparkyTools.AutoMapper
         /// </summary>
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="sourceEnumerable">The source enumerable.</param>
+        /// <param name="afterMap">Optional callback action to do something with each mapped result.</param>
         /// <returns>Array of <typeparamref name="TResult"/>(empty array if <paramref name="sourceEnumerable"/> is null.)</returns>
-        public static TResult[] MappedToArrayOf<TResult>(this IEnumerable<object> sourceEnumerable)
+        public static TResult[] MappedToArrayOf<TResult>(this IEnumerable<object> sourceEnumerable, Action<TResult> afterMap = null)
         {
             return (sourceEnumerable == null)
                 ? new TResult[0]
-                : sourceEnumerable.Select(MappedTo<TResult>).ToArray();
+                : sourceEnumerable.Select(src => src.MappedTo(afterMap)).ToArray();
         }
 
         /// <summary>
@@ -74,12 +85,57 @@ namespace SparkyTools.AutoMapper
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <param name="sourceEnumerable">The source enumerable.</param>
         /// <param name="mapper">The <see cref="IMapper"/>.</param>
+        /// <param name="afterMap">Optional callback action to do something with each mapped result.</param>
         /// <returns>Array of <typeparamref name="TResult"/>(empty array if <paramref name="sourceEnumerable"/> is null.)</returns>
-        public static TResult[] MappedToArrayOf<TResult>(this IEnumerable<object> sourceEnumerable, IMapper mapper)
+        public static TResult[] MappedToArrayOf<TResult>(this IEnumerable<object> sourceEnumerable, IMapper mapper, Action<TResult> afterMap = null)
         {
             return (sourceEnumerable == null)
                 ? new TResult[0]
-                : sourceEnumerable.Select(x => x.MappedTo<TResult>(mapper)).ToArray();
+                : sourceEnumerable.Select(x => x.MappedTo(mapper, afterMap)).ToArray();
+        }
+
+        /// <summary>
+        /// Map <see cref="IEnumerable{T}"/> to array of <typeparamref name="TResult"/> using static Mapper.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="sourceEnumerable">The source enumerable.</param>
+        /// <param name="afterMap">Optional callback action to do something with each mapped result.</param>
+        /// <returns>Array of <typeparamref name="TResult"/>(empty array if <paramref name="sourceEnumerable"/> is null.)</returns>
+        public static TResult[] MappedToArray<TSource, TResult>(this IEnumerable<TSource> sourceEnumerable, Action<TSource, TResult> afterMap = null)
+        {
+            if (sourceEnumerable == null) return new TResult[0];
+
+            return sourceEnumerable.Select(src =>
+            {
+                TResult dest = Mapper.Map<TSource, TResult>(src);
+                afterMap?.Invoke(src, dest);
+                return dest;
+            }
+            ).ToArray();
+        }
+
+        /// <summary>
+        /// Map <see cref="IEnumerable{T}"/> to array of <typeparamref name="TResult"/> using <see cref="IMapper"/> instance.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the source.</typeparam>
+        /// <typeparam name="TResult">The type of the result.</typeparam>
+        /// <param name="sourceEnumerable">The source enumerable.</param>
+        /// <param name="mapper">The <see cref="IMapper"/>.</param>
+        /// <param name="afterMap">Optional callback action to do something with each mapped result.</param>
+        /// <returns>Array of <typeparamref name="TResult"/>(empty array if <paramref name="sourceEnumerable"/> is null.)</returns>
+        public static TResult[] MappedToArray<TSource, TResult>(this IEnumerable<TSource> sourceEnumerable,
+            IMapper mapper, Action<TSource, TResult> afterMap = null)
+        {
+            if (sourceEnumerable == null) return new TResult[0];
+
+            return sourceEnumerable.Select(src =>
+            {
+                TResult dest = mapper.Map<TSource, TResult>(src);
+                afterMap?.Invoke(src, dest);
+                return dest;
+            }
+            ).ToArray();
         }
 
         /// <summary>

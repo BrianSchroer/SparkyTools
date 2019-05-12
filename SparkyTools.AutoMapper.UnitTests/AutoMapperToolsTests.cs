@@ -40,6 +40,17 @@ namespace SparkyTools.AutoMapper.UnitTests
         }
 
         [TestMethod]
+        public void MappedTo_with_afterMap_should_work()
+        {
+            CreateStaticMap(map => map.IgnoreMember(x => x.Address));
+
+            var dest = _source.MappedTo<Dest>(d => d.Id = 666);
+
+            Assert.AreEqual(dest.DateTime, _source.DateTime);
+            Assert.AreEqual(dest.Id, 666);
+        }
+
+        [TestMethod]
         public void MappedTo_should_return_null_for_null_input()
         {
             CreateStaticMap(map => map.IgnoreMember(x => x.Address));
@@ -59,6 +70,17 @@ namespace SparkyTools.AutoMapper.UnitTests
             var dest = _source.MappedTo<Dest>(mapper);
 
             _mapTester.IgnoringAllOtherMembers().AssertMappedValues(_source, dest);
+        }
+
+        [TestMethod]
+        public void MappedTo_with_IMapper_and_afterMap_should_work()
+        {
+            IMapper mapper = CreateInstanceMap(map => map.IgnoreMember(x => x.Address));
+
+            var dest = _source.MappedTo<Dest>(mapper, d => d.Id = 666);
+
+            Assert.AreEqual(dest.DateTime, _source.DateTime);
+            Assert.AreEqual(dest.Id, 666);
         }
 
         [TestMethod]
@@ -85,6 +107,38 @@ namespace SparkyTools.AutoMapper.UnitTests
         }
 
         [TestMethod]
+        public void MappedToArrayOf_with_afterMap_should_work()
+        {
+            CreateStaticMap(map => map.IgnoreMember(x => x.Address));
+
+            var dest = (new[] { _source, _source, _source }).MappedToArrayOf<Dest>(d => d.Id = 666);
+
+            Assert.AreEqual(3, dest.Length);
+
+            for (int i = 0; i < dest.Length; i++)
+            {
+                Assert.AreEqual(dest[i].DateTime, _source.DateTime);
+                Assert.AreEqual(dest[i].Id, 666);
+            }
+        }
+
+        [TestMethod]
+        public void MappedToArray_with_afterMap_using_source_and_dest_should_work()
+        {
+            CreateStaticMap(map => map.IgnoreMember(x => x.Address));
+
+            var dest = (new[] { _source, _source, _source }).MappedToArray<Source, Dest>((s, d) => d.Id = s.Id + 1);
+
+            Assert.AreEqual(3, dest.Length);
+
+            for (int i = 0; i < dest.Length; i++)
+            {
+                Assert.AreEqual(dest[i].DateTime, _source.DateTime);
+                Assert.AreEqual(dest[i].Id, _source.Id + 1);
+            }
+        }
+
+        [TestMethod]
         public void MappedToArrayOf_should_return_empty_array_for_null_input()
         {
             CreateStaticMap(map => map.IgnoreMember(x => x.Address));
@@ -101,10 +155,31 @@ namespace SparkyTools.AutoMapper.UnitTests
         {
             IMapper mapper = CreateInstanceMap(map => map.IgnoreMember(x => x.Address));
 
-            var dest = (new[] { _source, _source, _source }).MappedToArrayOf<Dest>(mapper);
+            var dest = (new[] { _source, _source, _source }).MappedToArrayOf<Dest>(mapper, d => d.Id = 666);
 
             Assert.AreEqual(3, dest.Length);
-            _mapTester.IgnoringAllOtherMembers().AssertMappedValues(_source, dest[0]); ;
+
+            for (int i = 0; i < dest.Length; i++)
+            {
+                Assert.AreEqual(dest[i].DateTime, _source.DateTime);
+                Assert.AreEqual(dest[i].Id, 666);
+            }
+        }
+
+        [TestMethod]
+        public void MappedToArray_with_IMapper_and_afterMap_using_source_and_dest_should_work()
+        {
+            IMapper mapper = CreateInstanceMap(map => map.IgnoreMember(x => x.Address));
+
+            var dest = (new[] { _source, _source, _source }).MappedToArray<Source, Dest>(mapper, (s, d) => d.Id = s.Id + 1);
+
+            Assert.AreEqual(3, dest.Length);
+
+            for (int i = 0; i < dest.Length; i++)
+            {
+                Assert.AreEqual(dest[i].DateTime, _source.DateTime);
+                Assert.AreEqual(dest[i].Id, _source.Id + 1);
+            }
         }
 
         [TestMethod]
