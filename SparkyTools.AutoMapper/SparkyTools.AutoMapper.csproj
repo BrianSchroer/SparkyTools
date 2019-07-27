@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <Authors>Brian Schroer</Authors>
     <Company>Brian Schroer</Company>
     <Description>AutoMapper syntax helpers</Description>
@@ -12,11 +12,10 @@
     <RepositoryUrl>https://github.com/BrianSchroer/SparkyTools</RepositoryUrl>
     <PackageTags>mapping, automapper</PackageTags>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <FileVersion>2.0.3.0</FileVersion>
-    <PackageReleaseNotes>v2.0 - Upgraded to .NET Standard 2.0, AutoMapper 8.0 (AutoMapper 8 has breaking changes from v7.)
-v2.0.3 - Added .MappedToArray afterMap callback</PackageReleaseNotes>
-    <Version>2.0.3</Version>
+    <AssemblyVersion>2.0.4.0</AssemblyVersion>
+    <FileVersion>2.0.4.0</FileVersion>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Version>2.0.4</Version>
     <Product>SparkyTools.AutoMapper</Product>
     <PackageId>SparkyTools.AutoMapper</PackageId>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>

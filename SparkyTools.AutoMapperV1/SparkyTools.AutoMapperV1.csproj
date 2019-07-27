@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFrameworks>netstandard1.1;net461</TargetFrameworks>
     <AssemblyName>SparkyTools.AutoMapper</AssemblyName>
     <RootNamespace>SparkyTools.AutoMapper</RootNamespace>
     <PackageId>SparkyTools.AutoMapper</PackageId>
-    <Version>1.5.2</Version>
+    <Version>1.5.3</Version>
     <Authors>Brian Schroer</Authors>
     <Company>Brian SchroerBrian Schroer</Company>
     <Description>AutoMapper syntax helpers</Description>
@@ -15,8 +15,8 @@
     <PackageIconUrl>https://raw.githubusercontent.com/BrianSchroer/SparkyTools/master/Sparky.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/BrianSchroer/SparkyTools</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>1.5.2.0</AssemblyVersion>
-    <PackageReleaseNotes>v1.5.2 - Added .MappedToArray afterMap callback</PackageReleaseNotes>
+    <AssemblyVersion>1.5.3.0</AssemblyVersion>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

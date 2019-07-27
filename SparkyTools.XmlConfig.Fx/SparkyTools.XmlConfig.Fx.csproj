@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SparkyTools.DependencyProvider, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SparkyTools.DependencyProvider.1.1.0\lib\netstandard1.0\SparkyTools.DependencyProvider.dll</HintPath>
+    <Reference Include="SparkyTools.DependencyProvider, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SparkyTools.DependencyProvider.1.2.1\lib\netstandard1.0\SparkyTools.DependencyProvider.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />

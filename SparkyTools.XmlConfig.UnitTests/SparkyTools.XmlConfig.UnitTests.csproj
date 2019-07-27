@@ -51,11 +51,11 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="SparkyTestHelpers, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SparkyTestHelpers.1.5.0\lib\netstandard1.3\SparkyTestHelpers.dll</HintPath>
+    <Reference Include="SparkyTestHelpers, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SparkyTestHelpers.1.5.3\lib\net461\SparkyTestHelpers.dll</HintPath>
     </Reference>
-    <Reference Include="SparkyTools.DependencyProvider, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SparkyTools.DependencyProvider.1.1.0\lib\netstandard1.0\SparkyTools.DependencyProvider.dll</HintPath>
+    <Reference Include="SparkyTools.DependencyProvider, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SparkyTools.DependencyProvider.1.2.1\lib\net461\SparkyTools.DependencyProvider.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
