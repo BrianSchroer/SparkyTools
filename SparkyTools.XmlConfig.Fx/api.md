@@ -14,8 +14,8 @@ In the .config file, register each custom section with a type of "SparkyTools.Xm
 ```xml
 <configuration>
   <configSections>
-    <section name="Foo" type="SparkyTools.XmlConfig.ConfigurationSectionDeserializer, SparkyTools.XmlConfig" />
-    <section name="FooList" type="SparkyTools.XmlConfig.ConfigurationSectionListDeserializer, SparkyTools.XmlConfig" />
+    <section name="Foo" type="SparkyTools.XmlConfigFx.ConfigurationSectionDeserializer, SparkyTools.XmlConfigFx" />
+    <section name="FooList" type="SparkyTools.XmlConfigFx.ConfigurationSectionListDeserializer, SparkyTools.XmlConfigFx" />
   </configSections>
 ```
 In each registered custom section, specify the object type via the ```type``` attribute. Here's an single instance section:
